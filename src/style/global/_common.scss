@@ -1,0 +1,129 @@
+body,
+#root,
+html {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  font-family: $primary-font;
+}
+
+.flex {
+  display: flex;
+
+  &.space-between {
+    justify-content: space-between;
+  }
+
+  &.flex-row {
+    width: 100%;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+p {
+  margin: 0;
+  color: $primary-color;
+  &.bold {
+    font-weight: bold;
+  }
+}
+
+input {
+  color: grey;
+  height: 50px;
+  border-radius: 50%;
+  &::placeholder {
+    color: #c1c1c1;
+  }
+}
+
+.text-large {
+  color: $primary-color;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 23px;
+  font-family: $secondary-font;
+}
+
+.text-info {
+  color: $info-color;
+  font-family: $primary-font;
+  font-weight: 300;
+  &.small {
+    font-size: 14px;
+  }
+  &.smaller {
+    font-size: 12px;
+  }
+}
+
+.ecology {
+  color: $green;
+  &.big {
+    font-size: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+    font-family: $primary-font;
+    font-weight: 300;
+  }
+}
+
+h2 {
+  color: $primary-color;
+  font-family: $secondary-font;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+h3 {
+  font-family: $secondary-font;
+}
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $green;
+}
+
+.orange {
+  color: $orange;
+}
+
+.button {
+  text-decoration: none;
+  border: none;
+  padding: 14px 87px;
+  border: none;
+  border-radius: 3px;
+  white-space: nowrap;
+  &.primary {
+    background-color: $red;
+    color: white;
+  }
+}
+
+.button + p {
+  margin-top: 20px;
+}

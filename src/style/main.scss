@@ -1,0 +1,23 @@
+// GLOBAL
+
+@import './global/variables';
+@import './global/fonts';
+@import './global/mixins';
+@import './global/common';
+
+// BLOCS
+@import './blocs/home';
+@import './blocs/_results';
+@import './blocs/_detailedResults';
+
+//COMPONENTS
+@import './components/navbar';
+@import './components/searchbar';
+@import './components/resultCard';
+@import './components/ecologyCard';
+@import './components/stepsCard';
+@import './components/detailedResultCard';
+@import './components/searchBarRecap';
+@import './components/smallResultCard';
+
+@import '~react-datepicker/dist/react-datepicker.css';

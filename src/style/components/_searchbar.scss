@@ -1,0 +1,71 @@
+.searchbar {
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 5px 24px rgba(0, 0, 0, 0.05);
+  margin-bottom: 50px;
+
+  &_top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+
+    .select-values {
+      margin-right: 30px;
+
+      select {
+        border: none;
+        background-color: transparent;
+        color: grey;
+        font-size: 14px;
+      }
+    }
+  }
+
+  &_bottom {
+    padding: 5px;
+
+    .autocomplete-address {
+      flex-basis: 33%;
+      &-input {
+        min-width: 250px;
+        padding: 15px 15px 15px 50px;
+        border: 0.5px solid lightgrey;
+        background: url('../img/svg/localisation.svg');
+        background-size: 16px;
+        background-repeat: no-repeat;
+        background-position: 5% 50%;
+        height: 50px;
+      }
+      .ap-icon-pin {
+        display: none;
+      }
+    }
+
+    .submit {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: $primary-color;
+      background-image: url('../img/svg/search.svg');
+      background-size: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .date {
+      width: 100%;
+      padding: 15px 15px 15px 40px;
+      height: 50px;
+      border-radius: 5px;
+      border: 0.5px solid lightgrey;
+      background: url('../img/svg/calendar.svg');
+      background-size: 16px;
+      background-repeat: no-repeat;
+      background-position: 5% 50%;
+    }
+  }
+}

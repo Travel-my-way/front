@@ -1,0 +1,53 @@
+.result-card {
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0px 5px 24px rgba(0, 0, 0, 0.05);
+  margin-bottom: 50px;
+  overflow: hidden;
+  &-content {
+    height: 220px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+  }
+  .info-wrapper {
+    width: 150px;
+  }
+
+  .step-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 80px;
+  }
+
+  &-label {
+    height: 36px;
+    background-color: $green;
+    color: white;
+    width: 100%;
+    padding: 5px 30px;
+
+    .icon {
+      margin-right: 9px;
+    }
+  }
+
+  .eco-compare {
+    font-weight: 500;
+  }
+
+  .step {
+    width: 50px;
+    text-align: center;
+    margin-right: 6px;
+
+    .material-icons {
+      color: $primary-color;
+      font-size: 44px;
+    }
+  }
+}

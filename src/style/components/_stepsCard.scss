@@ -1,0 +1,20 @@
+.steps-card {
+  margin: 0 auto;
+  padding: 35px 25px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 50px;
+
+  .step {
+    margin: 0px 50px;
+    width: 0px;
+  }
+  .step-icon {
+    min-width: 70px;
+    text-align: center;
+  }
+  .step-description {
+    flex-basis: 80%;
+    margin-right: 12px;
+  }
+}
