@@ -1,5 +1,11 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const dotenv = require('dotenv');
+const webpack = require('webpack');
+
+dotenv.config();
+
+const API_URL = process.env.API_URL;
 
 module.exports = {
   context: __dirname,
@@ -59,6 +65,9 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.ejs'
-    })
+    }),
+    new webpack.DefinePlugin({
+      'API_URL': JSON.stringify(API_URL)
+  }),
   ]
 }
