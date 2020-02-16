@@ -1,4 +1,9 @@
 {
   "root": "dist",
-  "clean_urls": false
+  "clean_urls": false,
+  "headers": {
+    "/**": {
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
 }
