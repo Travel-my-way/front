@@ -1,3 +1,5 @@
+Projet en open source réalisé dans le cadre de DataForGood : https://dataforgood.fr/projects/6_travelmyway.html#project
+
 ## Available Scripts
 
 To start the project, you can run :
