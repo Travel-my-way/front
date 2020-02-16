@@ -1,11 +1,6 @@
 {
   "root": "dist",
   "clean_urls": false,
-  "headers": {
-    "/**": {
-      "Access-Control-Allow-Origin": "*"
-    }
-  },
   "proxies": {
     "/journey": {
       "origin": "https://travel-my-way.herokuapp.com/"
