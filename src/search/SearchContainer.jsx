@@ -26,7 +26,7 @@ const SearchContainer = ({ setResults, results }) => {
 
     setResults({ ...results, isLoading: true })
 
-    const result = await getJourney(
+    const data = await getJourney(
       departureCoordinates.lat,
       departureCoordinates.lng,
       arrivalCoordinates.lat,
@@ -34,9 +34,7 @@ const SearchContainer = ({ setResults, results }) => {
       formatedDate
     )
 
-    // console.log('⬇⬇⬇ call API ⬇⬇⬇')
-    // console.log('----------- beep boop', result.data)
-    setResults({ journeys: result.data, isLoading: false })
+    setResults({ journeys: data, isLoading: false })
   }
 
   return (
