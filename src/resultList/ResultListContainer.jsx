@@ -29,7 +29,8 @@ const addEcoComparisonToJourney = journeys => {
 
 const ResultListContainer = ({ results, setResults }) => {
   const { journeys, isLoading } = results
-  const sortedJourneys = addEcoComparisonToJourney(sortByCO2(journeys))
+  const noResult = journeys === undefined || journeys.length === 0
+  const sortedJourneys = noResult ? [] : addEcoComparisonToJourney(sortByCO2(journeys))
 
   return (
     <div className="page-results">
@@ -37,7 +38,7 @@ const ResultListContainer = ({ results, setResults }) => {
       <SearchContainer setResults={setResults} results={results} />
       <main className="content-wrapper">
         {isLoading && <p>Chargement...</p>}
-        {journeys.length === 0 && !isLoading ? (
+        {noResult && !isLoading ? (
           <p>Désolé, votre recherche n'a abouti à aucun résultat</p>
         ) : (
           <h2>Travel my Way vous recommande</h2>

@@ -8,9 +8,8 @@ import DetailedResultContainer from './detailedResult/DetailedResultContainer'
 import './style/main.scss'
 
 const App = () => {
-  const [results, setResults] = useState({journeys:[], isLoading: false})
-  const { journeys } = results;
-
+  const [results, setResults] = useState({ journeys: [], isLoading: false })
+  const { journeys } = results
   return (
     <>
       <Router>

@@ -25,16 +25,14 @@ const SearchContainer = ({ setResults, results }) => {
     const formatedDate = startDate.toISOString()
 
     setResults({ ...results, isLoading: true })
-
-    const data = await getJourney(
+    const res = await getJourney(
       departureCoordinates.lat,
       departureCoordinates.lng,
       arrivalCoordinates.lat,
       arrivalCoordinates.lng,
       formatedDate
     )
-
-    setResults({ journeys: data, isLoading: false })
+    setResults({ journeys: res.data, isLoading: false })
   }
 
   return (
