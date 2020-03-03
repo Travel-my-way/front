@@ -127,3 +127,11 @@ h3 {
 .button + p {
   margin-top: 20px;
 }
+
+.icn-loader {
+  text-align: center;
+  &-img {
+    width: 48px;
+    height: 48px;
+  }
+}
