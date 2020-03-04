@@ -1,7 +1,7 @@
 import React from 'react'
 import AlgoliaPlaces from 'algolia-places-react'
 
-const AutocompleteAddress = ({ changeAddress, placeholder }) => {
+const AutocompleteAddress = ({ changeAddress, placeholder, results, setResults }) => {
   return (
     <div className="autocomplete-address">
       <AlgoliaPlaces
@@ -13,13 +13,12 @@ const AutocompleteAddress = ({ changeAddress, placeholder }) => {
           language: 'fr'
           // Other options from https://community.algolia.com/places/documentation.html#options
         }}
-        onChange={({ suggestion }) => changeAddress(suggestion)}
-        onClear={() => changeAddress()}
-        onLimit={({ message }) => console.log('Fired when you reached your current rate limit.')}
-        onError={({ message }) =>
-          console.log(
-            'Fired when we could not make the request to Algolia Places servers for any reason but reaching your rate limit.'
-          )
+        onChange={({ suggestion, query }) => changeAddress(suggestion, query)}
+        onLimit={() =>
+          setResults({ ...results, error: "Vous avez atteint votre limite d'utilisation de l'api" })
+        }
+        onError={() =>
+          setResults({ ...results, error: "Erreur lors de l'utilisation de l'api Algolia" })
         }
       />
     </div>

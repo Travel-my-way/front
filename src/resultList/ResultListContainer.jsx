@@ -29,9 +29,8 @@ const addEcoComparisonToJourney = journeys => {
 }
 
 const renderJourneysList = results => {
-  const { journeys, isLoading } = results
-  const noResult = journeys === undefined || journeys.length === 0
-  const sortedJourneys = noResult ? [] : addEcoComparisonToJourney(sortByCO2(journeys))
+  const { journeys, isLoading, error } = results
+
   if (isLoading) {
     return (
       <div className="icn-loader">
@@ -40,9 +39,14 @@ const renderJourneysList = results => {
       </div>
     )
   }
-  if (noResult && !isLoading) {
+  if (error !== null) {
+    return <p className="red">{error}</p>
+  }
+
+  if (journeys.length === 0 || journeys === undefined) {
     return <p>Désolé, votre recherche n'a abouti à aucun résultat</p>
   }
+  const sortedJourneys = addEcoComparisonToJourney(sortByCO2(journeys))
   return (
     <div>
       <h2>Travel my Way vous recommande</h2>

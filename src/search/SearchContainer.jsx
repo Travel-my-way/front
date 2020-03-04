@@ -25,14 +25,18 @@ const SearchContainer = ({ setResults, results }) => {
     const formatedDate = startDate.toISOString()
 
     setResults({ ...results, isLoading: true })
-    const res = await getJourney(
+
+    getJourney(
       departureCoordinates.lat,
       departureCoordinates.lng,
       arrivalCoordinates.lat,
       arrivalCoordinates.lng,
       formatedDate
     )
-    setResults({ journeys: res.data, isLoading: false })
+      .then(res => setResults({ journeys: res.data, error: null, isLoading: false }))
+      .catch(() =>
+        setResults({ journeys: [], error: 'Erreur serveur. Veuillez réessayer', isLoading: false })
+      )
   }
 
   return (
@@ -56,10 +60,14 @@ const SearchContainer = ({ setResults, results }) => {
           <AutocompleteAddress
             placeholder="9 rue d'Alexandrie, 75002 Paris"
             changeAddress={changeDepartureAddress}
+            results={results}
+            setResults={setResults}
           />
           <AutocompleteAddress
             placeholder="9 rue d'Alexandrie, 75002 Paris"
             changeAddress={changeArrivalAddress}
+            results={results}
+            setResults={setResults}
           />
           <DatePicker selectDate={changeStartDate} date={startDate} />
           <Link to="/results" onClick={submitForm} className="submit" />
