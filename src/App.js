@@ -17,7 +17,7 @@ const App = () => {
           <Route
             path="/results"
             exact
-            render={() => <ResultListContainer setResults={setResults} results={results} />}
+            render={() => <ResultListContainer results={results} setResults={setResults} />}
           />
           <Route
             path="/results/:journeyId"
