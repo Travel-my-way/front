@@ -69,7 +69,7 @@ const SearchContainer = ({ setResults, results }) => {
       </div>
 
       <div className="searchbar_bottom">
-        <form method="post" className="flex space-between flex-column">
+        <form method="post" className="flex space-between search-form">
           <AutocompleteAddress
             placeholder="9 rue d'Alexandrie, 75002 Paris"
             changeAddress={changeDepartureAddress}
