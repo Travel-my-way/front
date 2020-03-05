@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Dropdown } from 'semantic-ui-react'
 import AutocompleteAddress from './AutocompleteAddress'
 import DatePicker from './DatePicker'
 import { getJourney } from '../services/api'
@@ -42,21 +43,33 @@ const SearchContainer = ({ setResults, results }) => {
   return (
     <div className="searchbar">
       <div className="searchbar_top">
-        <div className="select-values">
-          <select name="number-travelers">
-            <option value="">1 voyageur</option>
-          </select>
-        </div>
+        <Dropdown
+          className="select-values"
+          value="1 voyageur"
+          options={[
+            {
+              key: '1',
+              text: '1 voyageur',
+              value: '1 voyageur'
+            }
+          ]}
+        />
 
-        <div className="select-values">
-          <select name="type-travel">
-            <option value="go">Aller simple</option>
-          </select>
-        </div>
+        <Dropdown
+          value="Aller simple"
+          className="select-values"
+          options={[
+            {
+              key: 'go',
+              text: 'Aller simple',
+              value: 'Aller simple'
+            }
+          ]}
+        />
       </div>
 
       <div className="searchbar_bottom">
-        <form method="post" className="flex space-between">
+        <form method="post" className="flex space-between flex-column">
           <AutocompleteAddress
             placeholder="9 rue d'Alexandrie, 75002 Paris"
             changeAddress={changeDepartureAddress}
