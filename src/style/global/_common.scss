@@ -8,38 +8,6 @@ html {
   font-family: $primary-font;
 }
 
-.flex {
-  display: flex;
-
-  &.space-between {
-    justify-content: space-between;
-  }
-
-  &.flex-row {
-    width: 100%;
-  }
-
-  &.align-center {
-    align-items: center;
-  }
-}
-
-.inline-flex {
-  display: inline-flex;
-}
-
-.center {
-  text-align: center;
-}
-
-.right {
-  text-align: right;
-}
-
-.no-wrap {
-  white-space: nowrap;
-}
-
 p {
   margin: 0;
   color: $primary-color;
