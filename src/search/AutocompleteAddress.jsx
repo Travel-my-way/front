@@ -1,7 +1,7 @@
 import React from 'react'
 import AlgoliaPlaces from 'algolia-places-react'
 
-const AutocompleteAddress = ({ changeAddress, placeholder, results, setResults }) => {
+const AutocompleteAddress = ({ changeAddress, placeholder, setResults, results }) => {
   return (
     <div className="autocomplete-address">
       <AlgoliaPlaces

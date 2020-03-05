@@ -21,11 +21,9 @@ const SearchContainer = ({ setResults, results }) => {
     setStartDate(date)
   }
 
-  const submitForm = async () => {
+  const submitForm = () => {
     const formatedDate = startDate.toISOString()
-
     setResults({ ...results, isLoading: true })
-
     getJourney(
       departureCoordinates.lat,
       departureCoordinates.lng,
@@ -33,10 +31,12 @@ const SearchContainer = ({ setResults, results }) => {
       arrivalCoordinates.lng,
       formatedDate
     )
-      .then(res => setResults({ journeys: res.data, error: null, isLoading: false }))
-      .catch(() =>
+      .then(res => {
+        setResults({ journeys: res.data, error: null, isLoading: false })
+      })
+      .catch(() => {
         setResults({ journeys: [], error: 'Erreur serveur. Veuillez réessayer', isLoading: false })
-      )
+      })
   }
 
   return (
