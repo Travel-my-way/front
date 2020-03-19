@@ -3,7 +3,7 @@ import ResultCard from './ResultCard'
 import Header from '../components/Header'
 import SearchContainer from '../search/SearchContainer'
 import loader from '../img/svg/loader.svg'
-import DetailedResultCard from '../detailedResult/DetailedResultCard'
+import StepsCard from '../detailedResult/StepsCard'
 
 const sortByCO2 = results => {
   return results.sort((a, b) => a.total_gCO2 - b.total_gCO2)
@@ -53,16 +53,16 @@ const JourneysList = ({ results }) => {
   return (
     <div>
       <h2>Travel my Way vous recommande</h2>
-      {sortedJourneys.map(journey => (
-        <div key={journey.id}>
-          <div onClick={() => setSelectedJourney(journey)}>
-            <ResultCard journey={journey} />
-          </div>
-          {journeyToDetail.id === journey.id && (
-            <DetailedResultCard selectedJourney={journeyToDetail} />
-          )}
+      <div className="flex">
+        <div>
+          {sortedJourneys.map(journey => (
+            <div key={journey.id} onClick={() => setSelectedJourney(journey)}>
+              <ResultCard journey={journey} />
+            </div>
+          ))}
         </div>
-      ))}
+        <StepsCard steps={journeyToDetail.journey_steps} />
+      </div>
     </div>
   )
 }
