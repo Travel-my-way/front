@@ -3,7 +3,7 @@ import ResultCard from './ResultCard'
 import Header from '../components/Header'
 import SearchContainer from '../search/SearchContainer'
 import loader from '../img/svg/loader.svg'
-import StepsCard from '../detailedResult/StepsCard'
+import DetailedResultCard from '../detailedResult/DetailedResultCard'
 
 const sortByCO2 = results => {
   return results.sort((a, b) => a.total_gCO2 - b.total_gCO2)
@@ -65,7 +65,7 @@ const JourneysList = ({ results }) => {
             </div>
           ))}
         </div>
-        <StepsCard steps={journeyToDetail.journey_steps} />
+        <DetailedResultCard selectedJourney={journeyToDetail} />
       </div>
     </div>
   )
