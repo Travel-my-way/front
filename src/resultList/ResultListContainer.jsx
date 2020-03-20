@@ -56,7 +56,11 @@ const JourneysList = ({ results }) => {
       <div className="flex">
         <div>
           {sortedJourneys.map(journey => (
-            <div key={journey.id} onClick={() => setSelectedJourney(journey)}>
+            <div
+              key={journey.id}
+              onClick={() => setSelectedJourney(journey)}
+              className={journey.id === journeyToDetail.id ? 'result-card-arrow' : ''}
+            >
               <ResultCard journey={journey} />
             </div>
           ))}

@@ -50,4 +50,18 @@
       font-size: 44px;
     }
   }
+  &-arrow {
+    position: relative;
+    &::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-bottom: 20px solid transparent;
+      border-top: 20px solid transparent;
+      border-right: 20px solid #fff;
+      position: absolute;
+      right: -25px;
+      top: calc(50% - 25px);
+    }
+  }
 }
