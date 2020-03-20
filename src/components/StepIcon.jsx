@@ -11,14 +11,12 @@ const StepIcon = ({ stepType, className }) => {
   const stepIcon = {
     Walking: walk,
     Coach: bus,
-    ratp: subway,
     Plane: plane,
-    car,
-    métro: subway,
-    metro: subway,
+    Car: car,
+    Metro: subway,
     Waiting: wait,
     Train: train,
-    bus
+    Bus: bus
   }
   return (
     <div className={className}>
