@@ -1,9 +1,19 @@
 .detailed-result-card {
+  position: absolute;
+  right: 15%;
   height: fit-content;
   height: -moz-fit-content;
-  margin: 0 auto 0 24px;
   padding: 35px 25px;
   background-color: white;
   border-radius: 10px;
-  width: 100%;
+  width: calc(35% - 26px);
+  &::before {
+    content: '';
+    position: absolute;
+    border-bottom: 20px solid transparent;
+    border-top: 20px solid transparent;
+    border-right: 20px solid #fff;
+    left: -20px;
+    top: 108px; // half of the height card (128) - half of the arrow height (20)
+  }
 }
