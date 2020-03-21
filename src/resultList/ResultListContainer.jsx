@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import ResultCard from './ResultCard'
 import Header from '../components/Header'
 import SearchContainer from '../search/SearchContainer'
 import loader from '../img/svg/loader.svg'
+import DetailedResultCard from '../detailedResult/DetailedResultCard'
 
 const sortByCO2 = results => {
   return results.sort((a, b) => a.total_gCO2 - b.total_gCO2)
@@ -28,7 +28,8 @@ const addEcoComparisonToJourney = journeys => {
   })
 }
 
-const renderJourneysList = results => {
+const JourneysList = ({ results }) => {
+  const [selectedJourney, setSelectedJourney] = useState(null)
   const { journeys, isLoading, error } = results
 
   if (isLoading) {
@@ -46,15 +47,26 @@ const renderJourneysList = results => {
   if (journeys.length === 0 || journeys === undefined) {
     return <p>Désolé, votre recherche n'a abouti à aucun résultat</p>
   }
+
   const sortedJourneys = addEcoComparisonToJourney(sortByCO2(journeys))
+  const journeyToDetail = !selectedJourney ? sortedJourneys[0] : selectedJourney
   return (
     <div>
       <h2>Travel my Way vous recommande</h2>
-      {sortedJourneys.map(journey => (
-        <Link key={journey.id} to={`/results/${journey.id}`}>
-          <ResultCard journey={journey} />
-        </Link>
-      ))}
+      <div className="flex">
+        <div>
+          {sortedJourneys.map(journey => (
+            <div key={journey.id} className="flex" onClick={() => setSelectedJourney(journey)}>
+              <ResultCard journey={journey} />
+              {journey.id === journeyToDetail.id ? (
+                <DetailedResultCard selectedJourney={journeyToDetail} />
+              ) : (
+                <div />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
@@ -64,7 +76,9 @@ const ResultListContainer = ({ results, setResults }) => {
     <div className="page-results">
       <Header />
       <SearchContainer setResults={setResults} results={results} />
-      <main className="content-wrapper">{renderJourneysList(results)}</main>
+      <main className="content-wrapper">
+        <JourneysList results={results} />
+      </main>
     </div>
   )
 }
