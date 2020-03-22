@@ -23,7 +23,8 @@ const SearchContainer = ({ setResults, results }) => {
   }
 
   const submitForm = () => {
-    const formatedDate = startDate.toISOString()
+    const correctDate = new Date() > startDate ? new Date() : startDate
+    const formatedDate = correctDate.toISOString()
     setResults({ ...results, isLoading: true })
     getJourney(
       departureCoordinates.lat,
