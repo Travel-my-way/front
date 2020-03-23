@@ -9,25 +9,6 @@ const sortByCO2 = results => {
   return results.sort((a, b) => a.total_gCO2 - b.total_gCO2)
 }
 
-const addEcoComparisonToJourney = journeys => {
-  const lessEcoJourney = journeys[journeys.length - 1]
-  const mostEcoJourney = journeys[0]
-  return journeys.map(journey => {
-    if (journey.id !== lessEcoJourney.id) {
-      return {
-        ...journey,
-        ecoComparison: Math.ceil(lessEcoJourney.total_gCO2 / journey.total_gCO2),
-        mostEcoJourney: journey.id === mostEcoJourney.id
-      }
-    }
-    return {
-      ...journey,
-      ecoComparison: Math.ceil(journey.total_gCO2 / mostEcoJourney.total_gCO2),
-      lessEcoJourney: true
-    }
-  })
-}
-
 const JourneysList = ({ results }) => {
   const [selectedJourney, setSelectedJourney] = useState(null)
   const { journeys, isLoading, error } = results
@@ -48,7 +29,7 @@ const JourneysList = ({ results }) => {
     return <p>Désolé, votre recherche n'a abouti à aucun résultat</p>
   }
 
-  const sortedJourneys = addEcoComparisonToJourney(sortByCO2(journeys))
+  const sortedJourneys = sortByCO2(journeys)
   const journeyToDetail = !selectedJourney ? sortedJourneys[0] : selectedJourney
   return (
     <div>
@@ -57,7 +38,7 @@ const JourneysList = ({ results }) => {
         <div>
           {sortedJourneys.map(journey => (
             <div key={journey.id} className="flex" onClick={() => setSelectedJourney(journey)}>
-              <ResultCard journey={journey} />
+              <ResultCard journey={journey} journeys={journeys} />
               {journey.id === journeyToDetail.id ? (
                 <DetailedResultCard selectedJourney={journeyToDetail} />
               ) : (
