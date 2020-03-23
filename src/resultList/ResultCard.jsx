@@ -3,10 +3,10 @@ import { Icon } from 'semantic-ui-react'
 import { getTimeFromDate, getDurationFromSeconds, getPrice } from '../journey.utils'
 import StepIcon from '../components/StepIcon'
 
-const longDistanceSteps = ['Plane', 'car', 'Coach', 'Train']
+const longDistanceSteps = ['Plane', 'Car', 'Coach', 'Train']
 
 const renderStep = step => {
-  if (longDistanceSteps.some(longStep => longStep === step.type)) {
+  if (longDistanceSteps.indexOf(step.type) !== -1) {
     return (
       <div key={step.id} className="step">
         <StepIcon stepType={step.type} />
@@ -17,25 +17,45 @@ const renderStep = step => {
   return null
 }
 
-const getEcoComparisonInfo = journey => {
-  if (journey.lessEcoJourney)
-    return (
-      <p className="eco-compare red">{journey.ecoComparison} fois moins écologique que le train</p>
-    )
-
-  if (journey.ecoComparison < 5)
-    return (
-      <p className="eco-compare orange">{journey.ecoComparison} fois plus écologique que l'avion</p>
-    )
-  if (journey.ecoComparison >= 5)
-    return (
-      <p className="eco-compare green">{journey.ecoComparison} fois plus écologique que l'avion</p>
-    )
-
-  return null
+const getCategoryJourney = journey => {
+  const frCategory = {
+    Plane: "l'avion",
+    Train: 'le train',
+    Car: 'la voiture'
+  }
+  return frCategory[journey.category[0]]
 }
 
-const ResultCard = ({ journey }) => {
+const getEcoComparisonInfo = (journey, journeys) => {
+  const mostPollutingJourney = journeys[journeys.length - 1]
+  const lessPollutingJourney = journeys[0]
+
+  const ecoComparison = Math.round((journey.total_gCO2 / lessPollutingJourney.total_gCO2) * 10) / 10
+  const pollutedComparison =
+    Math.round((mostPollutingJourney.total_gCO2 / journey.total_gCO2) * 10) / 10
+
+  if (ecoComparison <= 1.5) {
+    return (
+      <p className="eco-compare green">
+        {pollutedComparison} fois plus écologique que {getCategoryJourney(mostPollutingJourney)}
+      </p>
+    )
+  }
+  if (pollutedComparison <= 1.2) {
+    return (
+      <p className="eco-compare red">
+        {ecoComparison} fois plus polluant que {getCategoryJourney(lessPollutingJourney)}
+      </p>
+    )
+  }
+  return (
+    <p className="eco-compare orange">
+      {ecoComparison} fois plus polluant que {getCategoryJourney(lessPollutingJourney)}
+    </p>
+  )
+}
+
+const ResultCard = ({ journey, journeys }) => {
   const departureHour = getTimeFromDate(journey.departure_date)
   const arrivalHour = getTimeFromDate(journey.arrival_date)
   const totalDuration = getDurationFromSeconds(journey.total_duration)
@@ -66,11 +86,11 @@ const ResultCard = ({ journey }) => {
         </div>
         <div className="step-wrapper">
           <div className="inline-flex">{journey.journey_steps.map(step => renderStep(step))}</div>
-          {getEcoComparisonInfo(journey)}
+          {getEcoComparisonInfo(journey, journeys)}
         </div>
       </div>
 
-      {journey.mostEcoJourney && (
+      {journey.id === journeys[0].id && (
         <div className="result-card-label">
           <Icon name="leaf" />
           <span>Le plus écologique</span>
