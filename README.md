@@ -2,9 +2,9 @@ Projet open source réalisé dans le cadre de DataForGood : https://dataforgood.
 
 ## Description
 
-Travel my way est un comparateur de trajet qui permet de mesurer leur impact environnemental.
+Travel my way est un comparateur de trajets qui permet de mesurer leur impact environnemental.
 
-Le "minimum valuable product" est visible à cette addresse : https://travel-my-way-front.herokuapp.com/
+Le "minimum valuable product" est visible à cette addresse : https://travel-my-way-front.herokuapp.com/. Pour l'instant, seuls les trajets en Europe sont possibles.
 
 ## Available Scripts
 
