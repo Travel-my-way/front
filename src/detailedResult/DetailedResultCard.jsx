@@ -10,9 +10,11 @@ const DetailedResultCard = ({ selectedJourney }) => {
       <h3 className="ecology">{totalCO2InKg} de CO2 émis</h3>
       <StepsCard steps={selectedJourney.journey_steps} />
       {selectedJourney.booking_link && (
-        <a className="button primary" href={selectedJourney.booking_link} target="_blank">
-          Réserver
-        </a>
+        <div className="center">
+          <a className="button primary" href={selectedJourney.booking_link} target="_blank">
+            Réserver
+          </a>
+        </div>
       )}
     </div>
   )

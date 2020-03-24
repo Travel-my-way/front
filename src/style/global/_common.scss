@@ -6,6 +6,7 @@ html {
   width: 100%;
   font-size: 16px;
   font-family: $primary-font;
+  background-color: $bg_color;
 }
 
 p {
@@ -86,7 +87,7 @@ h3 {
   border: none;
   border-radius: 3px;
   display: inline-block;
-  margin-top: 18px;
+  margin-top: 28px;
   &.primary {
     background-color: $red;
     color: white;
