@@ -18,7 +18,7 @@ const App = () => {
             exact
             render={() => <ResultListContainer results={results} setResults={setResults} />}
           />
-          <Route path="/" exact render={() => <Home setResults={setResults} />} />
+          <Route path="/" render={() => <Home setResults={setResults} />} />
         </Switch>
       </Router>
     </>
