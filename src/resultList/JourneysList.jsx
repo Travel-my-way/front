@@ -34,7 +34,7 @@ const JourneysList = ({ results }) => {
           {sortedJourneys.map(journey => (
             <div key={journey.id} className="flex" onClick={() => setSelectedJourney(journey)}>
               <ResultCard journey={journey} journeys={journeys} />
-              {journey.id === journeyToDetail.id ? (
+              {journey === journeyToDetail ? (
                 <DetailedResultCard selectedJourney={journeyToDetail} />
               ) : (
                 <div />
